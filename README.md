@@ -6,7 +6,7 @@ Este projeto contém um site feito por estudantes da escola SESI, para aprofunda
 
 1. Clone este repositório para o seu ambiente de desenvolvimento local utilizando o comando:
 ```
- git clone https://github.com/eduardo01322/barbearia_back.git
+ git clone https://github.com/joaogabriel333/barbearia_back.git
  ```
 
 2. Acesse o diretório do projeto:
