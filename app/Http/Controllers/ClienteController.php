@@ -51,7 +51,8 @@ class clientecontroller extends Controller
             ]);
         }
 
-        $Cliente->senha = Hash::make($Cliente->cpf);
+        $SenhaNova = $request->SenhaNova;
+        $Cliente->senha = Hash::make($SenhaNova);
         $Cliente->update();    
 
         return response()->json([

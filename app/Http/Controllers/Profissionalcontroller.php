@@ -52,7 +52,8 @@ public function redefinirSenha(Request $request){
         ]);
     }
 
-    $profissional->senha = Hash::make($profissional->cpf);
+    $SenhaNova = $request->SenhaNova;
+    $profissional->senha = Hash::make($SenhaNova);
     $profissional->update();    
 
     return response()->json([
