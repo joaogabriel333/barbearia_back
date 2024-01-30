@@ -26,6 +26,7 @@ class PagamentoFormRequest extends FormRequest
         return [
                 'tipoDePagamento' => 'required',
                 'taxa' => 'required|decimal:2',
+                'status'=> 'required',
         ];
     }
 
@@ -42,6 +43,7 @@ class PagamentoFormRequest extends FormRequest
             'tipoDePagamento.required' => 'O campo tipoDePagamento é obrigatorio',
             'taxa.required' => 'O campo taxa é obrigatorio',
             'taxa.decimal' => 'O campo taxa deve ter apenas numeros',
+            'status.required' => 'O campo status é obrigatorio',
         ];
     }
 }

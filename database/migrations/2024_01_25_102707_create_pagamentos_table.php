@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('tipoDePagamento')->nullable(false);
             $table->decimal('taxa')->nullable(false);
+            $table->string('status')->nullable(false);
             $table->timestamps();
         });
     }
