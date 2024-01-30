@@ -25,8 +25,10 @@ class AdmFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tipoDePagamento' => 'required',
-            'taxa' => 'required',
+            'nome' => 'required',
+            'cpf' => 'required|max:11|min:11|unique:adms,cpf',
+            'email' => 'required|email|unique:adms,email',
+            'password' => 'required',
         ];
     }
 
