@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class AdmController extends Controller
 {
-    public function adms(AdmFormRequest $request){
+    public function Adms(AdmFormRequest $request){
         $Adm= Adm::create([
     'nome'=> $request ->nome,
     'email'=> $request ->email,
     'cpf'=> $request ->cpf,
-    'senha'=> Hash::make($request->senha),
+    'password'=> Hash::make($request->password),
     
 ]);
     
@@ -25,6 +25,7 @@ return response()->json([
     "data" => $Adm
 ], 200);
 }
+
 public function retornarTodos(){
     $Adm = Adm::all();
     return response()->json([
@@ -32,6 +33,7 @@ public function retornarTodos(){
         'data'=> $Adm
     ]);
 }
+
 public function redefinirSenha(Request $request){
     $Adm = Adm::where('email', $request->email)->first();
     if (!isset($Adm)){
@@ -41,7 +43,8 @@ public function redefinirSenha(Request $request){
         ]);
     }
 
-    $Adm->senha = Hash::make($Adm->cpf);
+    $SenhaNova = $request->SenhaNova;
+    $Adm->password = Hash::make($SenhaNova);
     $Adm->update();    
 
     return response()->json([
@@ -49,6 +52,7 @@ public function redefinirSenha(Request $request){
         'message' => "Sua senha foi atualizada"
     ]);
 }
+
 public function pesquisarPorId($id){
     $Adm = Adm::find($id);
     if($Adm == null){
@@ -62,6 +66,7 @@ public function pesquisarPorId($id){
         'data'=> $Adm
     ]);
 }
+
 public function pesquisarPorNome(Request $request){
     $Adm =  Adm::where('nome', 'like', '%'. $request->nome . '%')->get();
     if(count($Adm) > 0){
@@ -89,6 +94,7 @@ return response()->json([
     'message' => 'não há resultados para pesquisa.'
 ]);
 }
+
 public function pesquisarPorEmail(Request $request){
     $Adm =  Adm::where('email', 'like', '%'. $request->email . '%')->get();
     if(count($Adm) > 0){
@@ -131,14 +137,11 @@ public function update(AdmFormRequestUpdate $request){
     if(isset($request->nome)){
         $Adm->nome = $request->nome;
     }
-if(isset($request->email)){
+    if(isset($request->email)){
         $Adm->email = $request->email;
     }
-if(isset($request->cpf)){
+    if(isset($request->cpf)){
         $Adm->cpf= $request->cpf;
-    }
-if(isset($request->senha)){
-        $Adm->senha = $request->senha;
     }
 
     $Adm->update();

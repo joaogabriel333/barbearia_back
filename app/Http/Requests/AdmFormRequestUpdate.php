@@ -25,9 +25,9 @@ class AdmFormRequestUpdate extends FormRequest
     {
         return [
             'nome' => 'required',
-            'cpf' => 'required|max:11|min:11|unique:adm,cpf',
-            'email' => 'required|email|unique:adm,email',
-            'senha' => 'required',
+            'cpf' => 'required|max:11|min:11|unique:adms,cpf,'. $this->id,
+            'email' => 'required|email|unique:adms,email,'. $this->id,
+            'password' => '',
         ];
     }
     public function failedValidation(Validator $validator)

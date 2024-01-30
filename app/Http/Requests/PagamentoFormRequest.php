@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class PagamentoFormRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class PagamentoFormRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +24,24 @@ class PagamentoFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+                'tipoDePagamento' => 'required',
+                'taxa' => 'required|decimal:2',
+        ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'success' => false,
+            'error' => $validator->errors()
+        ]));
+    }
+    public function messages(){
+
+        return[
+            'tipoDePagamento.required' => 'O campo tipoDePagamento é obrigatorio',
+            'taxa.required' => 'O campo taxa é obrigatorio',
+            'taxa.decimal' => 'O campo taxa deve ter apenas numeros',
         ];
     }
 }

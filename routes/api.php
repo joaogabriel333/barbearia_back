@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdmController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AgendaProfissionaiscontroller;
 use App\Http\Controllers\clientecontroller;
+use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\Profissionalcontroller;
 use App\Http\Controllers\ServicoController;
 use App\Models\servico;
@@ -45,6 +47,27 @@ route::get('find/servicos/{id}', [ServicoController::class, 'pesquisarPorId']);
 route::delete('delete/servicos/{id}', [ServicoController::class, 'excluir']);
 route::put('update/servicos', [ServicoController::class, 'update']);
 route::get('visualizar/servicos', [ServicoController::class, 'retornarTodos']);
+
+
+//Adm
+route::post('Adms', [AdmController::class, 'adms']);
+route::get('cpf/Adm', [AdmController::class, 'pesquisarPorCpf']);
+route::get('nome/Adm', [AdmController::class, 'pesquisarPorNome']);
+route::get('email/Adm', [AdmController::class, 'pesquisarPorEmail']);
+route::get('find/Adm/{id}', [AdmController::class, 'pesquisarPorId']);
+route::delete('delete/Adm/{id}', [AdmController::class, 'excluir']);
+route::put('update/Adm', [AdmController::class, 'update']);
+route::get('visualizar/Adm', [AdmController::class, 'retornarTodos']);
+Route::post('senha/Adm',[AdmController::class, 'redefinirSenha']);
+
+
+//Serviços
+route::post('pagamento', [PagamentoController::class, 'pagamentos']);
+route::get('nome/pagamento', [PagamentoController::class, 'pesquisarPorPagamento']);
+route::get('find/pagamento/{id}', [PagamentoController::class, 'pesquisarPorId']);
+route::delete('delete/pagamento/{id}', [PagamentoController::class, 'excluir']);
+route::put('update/pagamento', [PagamentoController::class, 'update']);
+route::get('visualizar/pagamento', [PagamentoController::class, 'retornarTodos']);
 
 
 //Agendamento Profissionais

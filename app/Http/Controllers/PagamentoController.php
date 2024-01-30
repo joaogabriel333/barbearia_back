@@ -27,6 +27,7 @@ public function retornarTodos(){
         'data'=> $pagamento
     ]);
 }
+
 public function pesquisarPorPagamento(Request $request){
     $pagamento =  pagamento::where('tipoDePagamento', 'like', '%'. $request->tipoDePagamento . '%')->get();
     if(count($pagamento) > 0){

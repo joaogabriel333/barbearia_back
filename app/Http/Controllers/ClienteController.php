@@ -192,10 +192,7 @@ class clientecontroller extends Controller
         if(isset($request->complemento)){
             $Cliente->complemento = $request->complemento;
         }
-        if(isset($request->senha)){
-            $Cliente->senha = $request->senha;
-        }
-    
+        
         $Cliente->update();
     
         return response()->json([

@@ -25,10 +25,8 @@ class AdmFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => 'required',
-            'cpf' => 'required|max:11|min:11|unique:adm,cpf',
-            'email' => 'required|email|unique:adm,email',
-            'senha' => 'required',
+            'tipoDePagamento' => 'required',
+            'taxa' => 'required',
         ];
     }
 
@@ -52,7 +50,7 @@ class AdmFormRequest extends FormRequest
             'email.required' => 'o email é obrigatorio',
             'email.email' => 'formato de email invalido',
             'email.unique' => 'email ja cadastrado no sistema',
-            'senha.required' => 'a senha obrigatorio'
+            'password.required' => 'a senha obrigatorio'
         ];
     }
 }
