@@ -111,7 +111,7 @@ return response()->json([
 
 
     //EDITANDO O AGENDAMENTO
-    public function update(AgendaFormRequest $request){
+    public function update(AgendaProfissionaisFormRequest $request){
         $agendamento = AgendaProfissionais::find($request->id);
 
         $dataHoraAgendamento = new DateTime($request->dataHora);

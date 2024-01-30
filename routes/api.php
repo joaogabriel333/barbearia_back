@@ -42,7 +42,7 @@ Route::post('senha/profissional',[Profissionalcontroller::class, 'redefinirSenha
 //Serviços
 route::post('servicos', [ServicoController::class, 'servicos']);
 route::get('descricao/servicos', [ServicoController::class, 'pesquisarPorDescricao']);
-route::post('nome/servicos', [ServicoController::class, 'pesquisarPorNome']);
+route::get('nome/servicos', [ServicoController::class, 'pesquisarPorNome']);
 route::get('find/servicos/{id}', [ServicoController::class, 'pesquisarPorId']);
 route::delete('delete/servicos/{id}', [ServicoController::class, 'excluir']);
 route::put('update/servicos', [ServicoController::class, 'update']);
@@ -61,7 +61,7 @@ route::get('visualizar/Adm', [AdmController::class, 'retornarTodos']);
 Route::post('senha/Adm',[AdmController::class, 'redefinirSenha']);
 
 
-//Serviços
+//Tipo de pagamento
 route::post('pagamento', [PagamentoController::class, 'pagamentos']);
 route::get('nome/pagamento', [PagamentoController::class, 'pesquisarPorPagamento']);
 route::get('find/pagamento/{id}', [PagamentoController::class, 'pesquisarPorId']);
